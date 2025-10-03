@@ -1,0 +1,91 @@
+{
+  "title": "Peternakan Kambing Perah",
+  "theme": "green",
+  "sections": [
+    {
+      "type": "hero",
+      "headline": "Susu Kambing Segar",
+      "subtext": "Langsung dari peternakan kami untuk kesehatan Anda",
+      "image": "https://via.placeholder.com/600x300?text=Hero+Kambing",
+      "cta": { "text": "Pesan Sekarang", "link": "#pesan" }
+    },
+    {
+      "type": "about",
+      "title": "Tentang Kami",
+      "content": "Kami adalah peternakan kambing perah yang menyediakan susu segar berkualitas tinggi."
+    },
+    {
+      "type": "gallery",
+      "images": [
+        "https://via.placeholder.com/200x200?text=Kambing+1",
+        "https://via.placeholder.com/200x200?text=Kambing+2",
+        "https://via.placeholder.com/200x200?text=Kambing+3"
+      ]
+    },
+    {
+      "type": "cta",
+      "text": "Coba Susu Kambing Sehat Hari Ini!",
+      "button": "Pesan Sekarang",
+      "link": "#pesan"
+    }
+  ]
+}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website JSON Prompt</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #2f855a; color: white; text-align: center; padding: 1rem; }
+    section { padding: 2rem; text-align: center; }
+    .hero { background: #f0fff4; }
+    .hero img { max-width: 100%; border-radius: 10px; margin-top: 1rem; }
+    .gallery { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .gallery img { border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    .cta { background: #c6f6d5; padding: 2rem; }
+    .cta a { display: inline-block; padding: 0.7rem 1.5rem; background: #2f855a; color: white; text-decoration: none; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+  <main id="site-content"></main>
+
+  <script>
+    // Ambil JSON eksternal
+    fetch("site.json")
+      .then(res => res.json())
+      .then(siteData => {
+        document.getElementById("site-header").innerHTML = `<h1>${siteData.title}</h1>`;
+        const content = document.getElementById("site-content");
+
+        siteData.sections.forEach(section => {
+          let html = "";
+          switch (section.type) {
+            case "hero":
+              html = `
+                <section class="hero">
+                  <h2>${section.headline}</h2>
+                  <p>${section.subtext}</p>
+                  <img src="${section.image}" alt="hero">
+                  <div><a href="${section.cta.link}">${section.cta.text}</a></div>
+                </section>`;
+              break;
+            case "about":
+              html = `<section class="about"><h2>${section.title}</h2><p>${section.content}</p></section>`;
+              break;
+            case "gallery":
+              html = `<section class="gallery">${section.images.map(img => `<img src="${img}">`).join("")}</section>`;
+              break;
+            case "cta":
+              html = `<section class="cta"><p>${section.text}</p><a href="${section.link}">${section.button}</a></section>`;
+              break;
+          }
+          content.innerHTML += html;
+        });
+      });
+  </script>
+</body>
+</html>
+
