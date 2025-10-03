@@ -1,0 +1,32 @@
+{
+  "title": "Peternakan Kambing Perah",
+  "theme": "green",
+  "sections": [
+    {
+      "type": "hero",
+      "headline": "Susu Kambing Segar",
+      "subtext": "Langsung dari peternakan kami untuk kesehatan Anda",
+      "image": "https://via.placeholder.com/600x300?text=Hero+Kambing",
+      "cta": { "text": "Pesan Sekarang", "link": "#pesan" }
+    },
+    {
+      "type": "about",
+      "title": "Tentang Kami",
+      "content": "Kami adalah peternakan kambing perah yang menyediakan susu segar berkualitas tinggi."
+    },
+    {
+      "type": "gallery",
+      "images": [
+        "https://via.placeholder.com/200x200?text=Kambing+1",
+        "https://via.placeholder.com/200x200?text=Kambing+2",
+        "https://via.placeholder.com/200x200?text=Kambing+3"
+      ]
+    },
+    {
+      "type": "cta",
+      "text": "Coba Susu Kambing Sehat Hari Ini!",
+      "button": "Pesan Sekarang",
+      "link": "#pesan"
+    }
+  ]
+}
